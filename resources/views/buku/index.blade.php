@@ -40,8 +40,8 @@
             </tr>
         </thead>
         <tbody>
-{{--  --}}
-            @foreach($data_buku as $index => $Buku){{-- foreach digunakan untuk iterasii perulangan melalui data buku --}}
+
+            @foreach($data_buku as $index => $Buku)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{$Buku->judul}}</td>
@@ -64,27 +64,6 @@
       <div style="margin-right: 20px">{{ $data_buku ->links('pagination::bootstrap-5') }}</div>
     <div class="d-flex justify-content-center mt-3 mb-3">
         <a href="{{ route('buku.create') }}" class="btn btn-primary" >Tambah Buku</a>
-    </div>
-    <div class="container mt-8">
-        <div class="card shadow-sm border-0">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0"><i class="fas fa-book"></i> Informasi Buku</h5>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6 text-center">
-                        <i class="fas fa-book-open fa-3x text-info mb-3"></i>
-                        <p class="card-text h5">Total Buku:</p>
-                        <p class="display-4 font-weight-bold text-primary">{{ $jumlah_buku }}</p>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        <i class="fas fa-dollar-sign fa-3x text-success mb-3"></i>
-                        <p class="card-text h5">Total Harga Semua Buku:</p>
-                        <p class="display-4 font-weight-bold text-success">Rp. {{ number_format($total_harga, 2, ',', '.') }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
