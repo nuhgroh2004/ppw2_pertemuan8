@@ -7,4 +7,6 @@ class Buku extends Model
     use HasFactory;
     protected $table = 'books';
     protected $dates = ['tgl_terbit'];
+    
+    protected $fillable = ['judul', 'penulis', 'harga', 'tahun_terbit'];
 }

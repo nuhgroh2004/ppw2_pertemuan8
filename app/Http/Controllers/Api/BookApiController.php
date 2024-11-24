@@ -24,22 +24,39 @@ class BookApiController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
-            'year' => 'required|integer',
+            'judul' => 'required|string',
+            'penulis' => 'required|string|max:30',
+            'harga' => 'required|numeric',
+            'tahun_terbit' => 'required|string'
         ]);
 
-        $book = Buku::create($validatedData);
+        $decodedArray = json_decode($request, true);
 
-        return new BookResource(true, 'Book created successfully', $book);
+        $new_tahun_terbit = "2024-12-12"; //strtotime ($decodedArray['tahun_terbit']);
+        // $validatedData = [
+        //     'judul' => $decodedArray['judul'],
+        //     'penulis' => $decodedArray['penulis'],
+        //     'harga' => $decodedArray['harga'],
+        //     'tahun_terbit' => $new_tahun_terbit
+        // ];
+        echo $decodedArray;
+        $book = Buku::create($validatedData);
+        // $book->save();
+        return response()->json([
+            'status' => true,
+            'message' => 'Book deleted successfully',
+        ]);
+
+        // return new BookResource(true, 'Book created successfully', $book);
     }
 
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'author' => 'required|string|max:255',
-            'year' => 'required|integer',
+           'judul' => 'required|string',
+            'penulis' => 'required|string|max:30',
+            'harga' => 'required|numeric',
+            'tahun_terbit' => 'required|string'
         ]);
 
         $book = Buku::findOrFail($id);
