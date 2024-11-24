@@ -36,3 +36,8 @@ Route::put('/buku/{id}', [BukuController::class, 'update'])->name('buku.update')
 // Route::get ('/buku/search', [BukuController::class, 'show'])->name('buku.search');//@search
 
 Route::get('/buku/search', [BukuController::class, 'search']) -> name('buku.search');
+
+
+Route::get('/books/show', function () {
+    return view('books.show');
+})->name('books.show');
